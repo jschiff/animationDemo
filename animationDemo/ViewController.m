@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jeremy Schiff. All rights reserved.
 //
 
+@import QuartzCore;
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -17,7 +18,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
+  [UIView animateWithDuration:1.0F animations:^{
+    CGPoint oldPosition = self.prettySquareView.layer.position;
+    CGPoint newPosition = CGPointMake(oldPosition.x, oldPosition.y - 100.0F);
+    self.prettySquareView.layer.position = newPosition;
+  }];
 }
 
 - (void)didReceiveMemoryWarning
